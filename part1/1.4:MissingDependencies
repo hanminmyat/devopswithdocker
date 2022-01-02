@@ -1,0 +1,16 @@
+Script started on 2022-01-02 12:25:45+06:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="91" LINES="50"]
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ docker run -it do[K[Kubuntu sh-[K -c 'apt update;[K>/dev/nul l 2>&1;apt install curl >/dev/null?[K 1[K2>&1[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C >/dev/nul[1@l[A]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@ [1@-[1@y[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C; echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+Input website:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="https://www.helsinki.fi/">here</a>.</p>
+</body></html>
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ exit
+
+Script done on 2022-01-02 12:30:11+06:30 [COMMAND_EXIT_CODE="0"]
