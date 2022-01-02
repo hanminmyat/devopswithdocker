@@ -1,0 +1,26 @@
+Script started on 2022-01-02 15:56:09+06:30 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="91" LINES="50"]
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ cat Dockerfile 
+FROM devopsdockeruh/simple-web-service:alpine
+CMD server
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ dov[Kcker build -t web-server .
+Sending build context to Docker daemon  116.2kB
+Step 1/2 : FROM devopsdockeruh/simple-web-service:alpine
+ ---> fd312adc88e0
+Step 2/2 : CMD server
+ ---> Running in c2a601f6eed4
+Removing intermediate container c2a601f6eed4
+ ---> 5cdb55310268
+Successfully built 5cdb55310268
+Successfully tagged web-server:latest
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ docker run web-server
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /*path                    --> server.Start.func1 (3 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+^C]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ exit
+
+Script done on 2022-01-02 15:57:11+06:30 [COMMAND_EXIT_CODE="2"]

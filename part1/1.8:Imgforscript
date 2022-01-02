@@ -1,0 +1,45 @@
+Script started on 2022-01-02 17:00:46+06:30 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="91" LINES="50"]
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ cat Dockerfile 
+FROM ubuntu:18.04
+COPY find-web.sh .
+RUN apt-get update >/dev/null 2>&1  && \
+apt-get install -y curl >/dev/null 2>&1
+CMD ./find-web.sh
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ cat find-web.sh 
+#!/bin/bash
+
+echo "Input website:"
+read website
+echo "Searching..."
+sleep 1
+curl http://$website
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ b[Kdocker build - [K [Kt curler .
+Sending build context to Docker daemon  262.7kB
+Step 1/4 : FROM ubuntu:18.04
+ ---> 5a214d77f5d7
+Step 2/4 : COPY find-web.sh .
+ ---> d914f779cdc3
+Step 3/4 : RUN apt-get update >/dev/null 2>&1  && apt-get install -y curl >/dev/null 2>&1
+ ---> Running in 70f3ca585854
+Removing intermediate container 70f3ca585854
+ ---> a6323c68057b
+Step 4/4 : CMD ./find-web.sh
+ ---> Running in a0e99c08d90a
+Removing intermediate container a0e99c08d90a
+ ---> 1a1baff9b723
+Successfully built 1a1baff9b723
+Successfully tagged curler:latest
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ docker run cur[K[K[K-it curler
+Input website:
+helsinki.fi
+Searching...
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="https://www.helsinki.fi/">here</a>.</p>
+</body></html>
+]0;daniel@G7: ~/mylabs/devopswithdocker/part1[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/part1[00m$ exit
+
+Script done on 2022-01-02 17:04:07+06:30 [COMMAND_EXIT_CODE="0"]
