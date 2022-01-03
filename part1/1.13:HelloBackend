@@ -1,0 +1,51 @@
+Script started on 2022-01-03 21:09:52+06:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="183" LINES="52"]
+]0;daniel@G7: ~/mylabs/devopswithdocker/material-applications/example-backend[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/material-applications/example-backend[00m$ cat Dockerfile 
+FROM golang:latest
+
+#change Work Dir
+WORKDIR /go/src
+
+#expose port
+EXPOSE 8080
+#Upload files
+COPY . .
+
+# Download Dependencies and build
+RUN go mod tidy >/dev/null 2>&1 && \
+    go build 
+
+# Run go backend
+CMD ["/go/src/server"]
+
+]0;daniel@G7: ~/mylabs/devopswithdocker/material-applications/example-backend[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/material-applications/example-backend[00m$ docker bild . -t example-backend && docker run -d -p 8080:8080 example-backend[1@u
+Sending build context to Docker daemon  50.69kB
+Step 1/6 : FROM golang:latest
+ ---> 276895edf967
+Step 2/6 : WORKDIR /go/src
+ ---> Running in 507d5bbcbe1e
+Removing intermediate container 507d5bbcbe1e
+ ---> 06d05f8d5b06
+Step 3/6 : EXPOSE 8080
+ ---> Running in 07f9880e5f42
+Removing intermediate container 07f9880e5f42
+ ---> dfec60e3b831
+Step 4/6 : COPY . .
+ ---> 98ab8d7faf80
+Step 5/6 : RUN go mod tidy >/dev/null 2>&1 &&     go build
+ ---> Running in e3050677710c
+Removing intermediate container e3050677710c
+ ---> ea1a1b422f5c
+Step 6/6 : CMD ["/go/src/server"]
+ ---> Running in 07217961978b
+Removing intermediate container 07217961978b
+ ---> 48c022af310b
+Successfully built 48c022af310b
+Successfully tagged example-backend:latest
+2b2cf2d6a59e4dc56b881d0f84d5f620d610141ce21c40ddbe158bf26bbbeaa1
+]0;daniel@G7: ~/mylabs/devopswithdocker/material-applications/example-backend[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/material-applications/example-backend[00m$ dokcer [K[K[K[K[Kcker ps
+CONTAINER ID   IMAGE             COMMAND            CREATED          STATUS          PORTS                                       NAMES
+2b2cf2d6a59e   example-backend   "/go/src/server"   19 seconds ago   Up 11 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   adoring_shockley
+]0;daniel@G7: ~/mylabs/devopswithdocker/material-applications/example-backend[01;32mdaniel@G7[00m:[01;34m~/mylabs/devopswithdocker/material-applications/example-backend[00m$ curl localhost:8080/ping
+pong
+
+Script done on 2022-01-03 21:15:55+06:30 [COMMAND_EXIT_CODE="0"]

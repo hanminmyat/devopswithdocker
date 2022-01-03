@@ -1,0 +1,23 @@
+Script started on 2022-01-03 22:20:25+06:30 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="183" LINES="50"]
+FROM golang:latest
+
+#set env
+ENV REQUEST_ORIGIN=http://localhost:5000 
+
+#change Work Dir
+WORKDIR /go/src
+
+#expose port
+EXPOSE 8080
+
+#Upload files
+COPY . .
+
+# Download Dependencies and build
+RUN go mod tidy >/dev/null 2>&1 && \
+    go build 
+
+# Run go backend
+CMD ["/go/src/server"]
+
+Script done on 2022-01-03 22:20:25+06:30 [COMMAND_EXIT_CODE="0"]
