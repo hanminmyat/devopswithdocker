@@ -1,0 +1,7 @@
+FROM alpine:latest
+
+# Install fortune
+RUN apk add --no-cache fortune
+
+# Execute fortune
+CMD ["/usr/bin/fortune"]

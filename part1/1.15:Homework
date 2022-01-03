@@ -1,0 +1,14 @@
+Script started on 2022-01-03 23:07:50+06:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="91" LINES="50"]
+# Docker Hub Repo URL
+# https://hub.docker.com/r/00928/fortune
+
+
+FROM alpine:latest
+
+# Install fortune
+RUN apk add --no-cache fortune
+
+# Execute fortune
+CMD ["/usr/bin/fortune"]
+
+Script done on 2022-01-03 23:07:50+06:30 [COMMAND_EXIT_CODE="0"]
