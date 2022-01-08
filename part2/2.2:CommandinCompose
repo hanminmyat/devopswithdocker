@@ -1,0 +1,11 @@
+Script started on 2022-01-04 19:52:20+06:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="90" LINES="30"]
+version: '3.5'
+services:
+        web-service:
+                image: devopsdockeruh/simple-web-service:alpine
+                container_name: web-service
+                ports:
+                - 8008:8080
+                command: server
+
+Script done on 2022-01-04 19:52:20+06:30 [COMMAND_EXIT_CODE="0"]

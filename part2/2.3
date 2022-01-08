@@ -1,0 +1,16 @@
+Script started on 2022-01-04 23:20:37+06:30 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="183" LINES="50"]
+version: '3.5'
+
+services:
+
+    web-backend:
+                 image: example-backend
+                 ports:
+                 - "8080:8080"
+
+    web-frontend:
+                image: example-frontend
+                ports:
+                - "5000:5000"
+
+Script done on 2022-01-04 23:20:37+06:30 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+
+    web-backend:
+                 image: example-backend
+                 ports:
+                 - 8080:8080
+                 environment:
+                 - REDIS_HOST=redis_cache
+
+    web-frontend:
+                image: example-frontend
+                ports:
+                - 5000:5000
+
+    redis_cache:
+                image: redis
+                ports:
+                - 6379:6379
+                restart: unless-stopped

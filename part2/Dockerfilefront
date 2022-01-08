@@ -1,0 +1,27 @@
+FROM node:14-alpine
+
+#ENV
+ENV REACT_APP_BACKEND_URL=http://localhost:8080
+
+#Change Work Dir
+WORKDIR /app
+
+#Expose port
+EXPOSE 5000
+
+# Upload project files
+COPY . .
+
+#RUN update and install packages
+RUN npm install
+
+#Build Nodejs
+RUN npm run build
+
+#Serving Static file
+#Install
+RUN npm install -g serve
+
+#Serve
+CMD ["serve","-s","-l","5000","build"]
+

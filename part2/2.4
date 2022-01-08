@@ -1,0 +1,24 @@
+Script started on 2022-01-07 21:55:12+06:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="183" LINES="50"]
+version: '3.5'
+
+services:
+
+    web-backend:
+                 image: example-backend
+                 ports:
+                 - 8080:8080
+                 environment:
+                 - REDIS_HOST=redis_cache
+
+    web-frontend:
+                image: example-frontend
+                ports:
+                - 5000:5000
+
+    redis_cache:
+                image: redis
+                ports:
+                - 6379:6379
+                restart: unless-stopped
+
+Script done on 2022-01-07 21:55:12+06:30 [COMMAND_EXIT_CODE="0"]
