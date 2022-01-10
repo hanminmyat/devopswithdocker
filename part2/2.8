@@ -1,0 +1,51 @@
+Script started on 2022-01-10 23:06:27+06:30 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="183" LINES="50"]
+version: '3.5'
+
+services:
+
+    web-backend:
+                 image: example-backend
+                 ports:
+                 - 8080:8080
+                 environment:                        
+                 - REDIS_HOST=redis_cache
+                 - POSTGRES_HOST=postgres_db
+                 - POSTGRES_PASSWORD=example
+                 depends_on:
+                 - postgres_db
+
+    web-frontend:
+                image: example-frontend
+                ports:
+                - 5000:5000
+
+    redis_cache:
+                image: redis
+                ports:
+                - 6379:6379
+                restart: unless-stopped
+
+    postgres_db:
+            image: postgres:13.2-alpine
+            restart: unless-stopped
+            environment:
+                   - POSTGRES_PASSWORD=example
+            volumes:
+                  - database:/var/lib/postgresql/data
+
+    nginx:
+           image: nginx:latest
+           ports:
+           - 80:80
+           volumes:
+                   - ./exe-materials/nginx.conf:/etc/nginx/nginx.conf
+           environment:
+                   - NGINX_HOST=http://localhost
+                   - NGINX_PORT=80
+           depends_on:
+                - web-backend
+                - web-frontend
+volumes:
+        database:
+
+Script done on 2022-01-10 23:06:27+06:30 [COMMAND_EXIT_CODE="0"]
